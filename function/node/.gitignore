@@ -1,3 +1,7 @@
+# for Development
+.devcontainer/
+.vscode/
+
 # Logs
 logs
 *.log
