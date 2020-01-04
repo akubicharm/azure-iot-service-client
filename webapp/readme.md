@@ -1,21 +1,19 @@
-# Initialize environment for development
+# 開発環境の設定
 
 ```
 npm init
 ```
 
+# アプリケーションのデプロイ
+az webapp up
 
-# Deploy App
-export REGION="japaneast"
-export PREFIX="ws$RANDOM$RANDOM"
-export RGNAME="$PREFIX"
-export INSIGHTSWEB="$PREFIX"
+# 環境変数の設定
+IoT HubのShared Access Policy の service の接続文字列を設定
+az webapp config appsettings set --settings AzureIoTHubConnectionString='接続文字列'
+ 
+# アクセス方法
 
-az group create --name $RGNAME  -l $REGION
-az appservice plan create --is-linux -g $RGNAME -n $PREFIX -l $REGION  --sku FREE
-az webapp create -g $RGNAME -n $PREFIX -p $PREFIX --deployment-local-git --runtime "node|10.15"
-
-
-# Config Webapp
-
+Method: POST
+Body :
+ {"message": "hello", "device": "dev01"}
 
